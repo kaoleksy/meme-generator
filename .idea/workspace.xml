@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e578dc-bbad-4ce3-8169-de399f9b5dcd" name="Default Changelist" comment="Registration added">
+    <list default="true" id="44e578dc-bbad-4ce3-8169-de399f9b5dcd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,16 +46,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="gitignore" value="1" />
           <entry key="html" value="28" />
           <entry key="php" value="1352" />
-          <entry key="txt" value="36" />
+          <entry key="txt" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="28" />
           <entry key="PHP" value="1317" />
-          <entry key="PLAIN_TEXT" value="36" />
+          <entry key="PLAIN_TEXT" value="61" />
           <entry key="SQL" value="35" />
         </counts>
       </usages-collector>
@@ -145,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -310,7 +310,7 @@
       <updated>1547298278095</updated>
       <workItem from="1547298279750" duration="815000" />
       <workItem from="1547299466581" duration="914000" />
-      <workItem from="1547317274597" duration="20468000" />
+      <workItem from="1547317274597" duration="20576000" />
     </task>
     <task id="LOCAL-00001" summary="Registration added">
       <created>1547384084568</created>
@@ -326,11 +326,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547384340776</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update gitignore file">
+      <created>1547384537956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547384537956</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22197000" />
+    <option name="totallyTimeSpent" value="22305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
@@ -366,7 +373,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Registration added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Registration added" />
+    <MESSAGE value="Update gitignore file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore file" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Parameters.php">
@@ -477,7 +485,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
