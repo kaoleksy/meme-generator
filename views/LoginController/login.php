@@ -7,15 +7,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            <h1 class="panel-header">SIGN IN</h1>
-            <hr>
+        <div class="col-sm-6 offset-sm-3 login-form">
             <?php if(isset($message)): ?>
                 <?php foreach($message as $item): ?>
-                    <div><?= $item ?></div>
+                    <div><?= $item ?></div><br>
                 <?php endforeach; ?>
             <?php endif; ?>
-
+            <h1 class="panel-header">SIGN IN</h1>
+            <hr>
             <form action="?page=login" method="POST">
                 <div class="form-group row">
                     <label for="inputEmail" class="col-sm-1 col-form-label">

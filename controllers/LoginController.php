@@ -14,13 +14,6 @@ class LoginController extends AppController
         parent::__construct();
     }
 
-    public function index()
-    {
-        $text = 'Hello there 👋';
-
-        $this->render('index', ['text' => $text]);
-    }
-
     public function login()
     {
         $mapper = new UserMapper();
@@ -32,13 +25,14 @@ class LoginController extends AppController
             $user = $mapper->getUser($_POST['email']);
 
             if(!$user) {
-                return $this->render('login', ['message' => ['Email not recognized']]);
+                return $this->render("LoginController", 'login', ['message' => ['Email not recognized']]);
             }
 
             if ($user->getPassword() !== md5($_POST['password'])) {
-                return $this->render('login', ['message' => ['Wrong password']]);
+                return $this->render("LoginController", 'login', ['message' => ['Wrong password']]);
             } else {
-                $_SESSION["id"] = $user->getEmail();
+                $_SESSION["email"] = $user->getEmail();
+                $_SESSION["username"] = $user->getUsername();
                 $_SESSION["role"] = $user->getRole();
 
                 $url = "http://$_SERVER[HTTP_HOST]/";
@@ -47,14 +41,7 @@ class LoginController extends AppController
             }
         }
 
-        $this->render('login');
+        $this->render("LoginController",'login');
     }
 
-    public function logout()
-    {
-        session_unset();
-        session_destroy();
-
-        $this->render('index', ['text' => 'You have been successfully logged out!']);
-    }
 }

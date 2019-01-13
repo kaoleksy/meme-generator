@@ -1,6 +1,10 @@
 body {
     font-family: Verdana;
     font-size: 10pt;
+    margin-top: 100px;
+}
+
+.login-form {
     margin-top: 100px !important;
 }
 

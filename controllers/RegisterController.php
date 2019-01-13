@@ -18,16 +18,28 @@ class RegisterController extends AppController
         $newUser = null;
 
         if($this->isPost()){
-            //var_dump($_POST['name']);
-            $registerUser = $mapper->registerUser($_POST['name'], $_POST['surname'], $_POST['email'], $_POST['password'], "ROLE_USER");
+//            var_dump($this->isPost());
+//            var_dump($_POST);
+            $registerUser = $mapper->registerUser(
+                                        $_POST['username'],
+                                        $_POST['name'],
+                                        $_POST['surname'],
+                                        $_POST['email'],
+                                        $_POST['password'],
+                                        "ROLE_USER"
+                                    );
 
             if($registerUser) {
-                return $this->render('register', ['message' => ['You are registered successfully. <br/>Click here to <a href=\'?page=login\'>login</a>']]);
+                return $this->render("RegisterController", 'register', [
+                    'message' => [
+                        'You are registered successfully. 
+                         <br/>Click here to <a href=\'?page=login\'>login</a>'
+                    ]
+                ]);
             } else {
-                return $this->render('register', ['message' => ['Something went wrong, try again']]);
+                return $this->render("RegisterController", 'register', ['message' => ['Something went wrong, try again']]);
             }
         }
-        $this->render('register');
-
+        $this->render("RegisterController",'register', [ 'message' => ['<br/>Click here to <a href=\'?page=login\'>back to login</a>']]);
     }
 }

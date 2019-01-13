@@ -1,6 +1,7 @@
 <?php
 
 require_once 'controllers/LoginController.php';
+require_once 'controllers/IndexController.php';
 require_once 'controllers/RegisterController.php';
 
 class Routing
@@ -11,7 +12,7 @@ class Routing
     {
         $this->routes = [
             'index' => [
-                'controller' => 'LoginController',
+                'controller' => 'IndexController',
                 'action' => 'index'
             ],
             'login' => [
@@ -21,7 +22,11 @@ class Routing
             'register' => [
                 'controller' => 'RegisterController',
                 'action' => 'register'
-            ]
+            ],
+            'logout' => [
+                'controller' => 'IndexController',
+                'action' => 'logout'
+                ]
         ];
     }
 

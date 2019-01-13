@@ -3,18 +3,30 @@
 class User
 {
     private $id;
+    private $username;
     private $name;
     private $surname;
     private $email;
     private $password;
     private $role = "ROLE_USER";
 
-    public function __construct($name, $surname, $email, $password)
+    public function __construct($username, $name, $surname, $email, $password)
     {
+        $this->username = $username;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function setUsername($username): void
+    {
+        $this->username = $username;
     }
 
     public function getName()
