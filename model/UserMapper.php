@@ -52,4 +52,17 @@ class UserMapper
             die();
         }
     }
+
+    public function registerUser($name, $surname, $email, $password, $role)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare("INSERT INTO `users` (name, surname, email, password, role) 
+                                                                   VALUES('$name', '$surname', '$email', '".md5($password)."', '$role' )");
+            $stmt->execute();
+            return true;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }

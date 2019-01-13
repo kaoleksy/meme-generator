@@ -35,7 +35,7 @@ class LoginController extends AppController
                 return $this->render('login', ['message' => ['Email not recognized']]);
             }
 
-            if ($user->getPassword() !== $_POST['password']) {
+            if ($user->getPassword() !== md5($_POST['password'])) {
                 return $this->render('login', ['message' => ['Wrong password']]);
             } else {
                 $_SESSION["id"] = $user->getEmail();
