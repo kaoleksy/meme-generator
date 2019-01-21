@@ -12,8 +12,7 @@ class IndexController extends AppController
 
     public function index()
     {
-        $text = 'It\'s index page!';
-        $this->render("IndexController",'index', ['text' => $text]);
+        $this->render("IndexController",'index');
     }
     public function logout()
     {

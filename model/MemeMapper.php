@@ -22,7 +22,7 @@ class MemeMapper
                                                                    VALUES('$path', '$title', '$user_id')");
             $stmt->bindParam(':path', $path, PDO::PARAM_STR);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-            $stmt->bindParam(':$user_id', $user_id, PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
             $stmt->execute();
             return true;
         }

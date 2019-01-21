@@ -19,7 +19,6 @@ class UserMapper
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            print_r($user);
             return new User($user['ID'], $user['username'], $user['name'], $user['surname'], $user['email'], $user['password']);
         }
         catch(PDOException $e) {
@@ -61,6 +60,8 @@ class UserMapper
                                                                    VALUES('$username', '$name', '$surname', '$email', '".md5($password)."', '$role' )");
             $stmt->execute();
             $this->createUserDirectory($username);
+            $this->createUserGenerateDirectory($username);
+            $this->createUserGeneratedDirectory($username);
             return true;
         }
         catch(PDOException $e) {
@@ -70,6 +71,27 @@ class UserMapper
 
     public function createUserDirectory($user){
         $folder = dirname(__DIR__).'/public/upload/'.$user;
+        $old_umask = umask(0);
+        if (!mkdir($folder, 0777, true)) {
+            return false;
+        }
+        umask($old_umask);
+        return true;
+    }
+
+    public function createUserGenerateDirectory($user){
+        $folder = dirname(__DIR__).'/public/generate/'.$user;
+        $old_umask = umask(0);
+        if (!mkdir($folder, 0777, true)) {
+            return false;
+        }
+        umask($old_umask);
+        return true;
+    }
+
+
+    public function createUserGeneratedDirectory($user){
+        $folder = dirname(__DIR__).'/public/generatedMemes/'.$user;
         $old_umask = umask(0);
         if (!mkdir($folder, 0777, true)) {
             return false;

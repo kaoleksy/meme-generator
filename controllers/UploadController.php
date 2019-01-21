@@ -4,7 +4,7 @@ require_once __DIR__.'/../model/MemeMapper.php';
 class UploadController extends AppController
 {
     const MAX_FILE_SIZE = 150000;
-    const SUPPORTED_TYPES = ['image/jpeg', 'image/png'];
+    const SUPPORTED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
     private $message = [];
 
@@ -16,16 +16,15 @@ class UploadController extends AppController
     public function upload()
     {
         $memeMapper = new MemeMapper();
-        $userMappes = new UserMapper();
+        $userMapper = new UserMapper();
 
         if ($this->isPost() && $this->validate($_FILES['file'])) {
             $userLogin=$_SESSION['username'].'/';
             $userId = null;
             if( isset( $_SESSION['email'])) {
-                $userId = $userMappes->getUser($_SESSION['email'])->getId();
+                $userId = $userMapper->getUser($_SESSION['email'])->getId();
             }
-            print_r($userLogin);
-            $uploadDirectory = dirname(__DIR__).self::UPLOAD_DIRECTORY.$userLogin.$_FILES['file']['name'];
+            $uploadDirectory = dirname(__DIR__).self::GENERATE_DIRECTORY.$userLogin.$_FILES['file']['name'];
 
 
             if(move_uploaded_file(
@@ -50,7 +49,6 @@ class UploadController extends AppController
             $this->message[] = 'File type is not supported.';
             return false;
         }
-        //print_r($file['size']);
         return true;
     }
 }

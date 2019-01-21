@@ -3,6 +3,7 @@
 class AppController
 {
     const UPLOAD_DIRECTORY = '/public/upload/';
+    const GENERATE_DIRECTORY = '/public/generate/';
 
     private $request = null;
 

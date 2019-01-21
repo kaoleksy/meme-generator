@@ -4,6 +4,7 @@ require_once 'controllers/LoginController.php';
 require_once 'controllers/IndexController.php';
 require_once 'controllers/RegisterController.php';
 require_once 'controllers/UploadController.php';
+require_once 'controllers/GenerateController.php';
 
 class Routing
 {
@@ -35,7 +36,20 @@ class Routing
             'upload' => [
                 'controller' => 'UploadController',
                 'action' => 'upload'
-            ]
+            ],
+            'generate' => [
+                'controller' => 'GenerateController',
+                'action' => 'generate'
+            ],
+            'generated' => [
+                'controller' => 'GenerateController',
+                'action' => 'generate'
+            ],
+            'latest_meme' => [
+                'controller' => 'GenerateController',
+                'action' => 'generated'
+            ],
+
         ];
     }
 

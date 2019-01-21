@@ -18,8 +18,6 @@ class RegisterController extends AppController
         $newUser = null;
 
         if($this->isPost()){
-//            var_dump($this->isPost());
-//            var_dump($_POST);
             $registerUser = $mapper->registerUser(
                                         $_POST['username'],
                                         $_POST['name'],

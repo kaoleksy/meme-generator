@@ -19,7 +19,38 @@ $(document).ready(function () {
                                 `);
             })
         });
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#uploadedImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#chooseImage").change(function() {
+        readURL(this);
+    });
+
+    const $generatedMeme = $('.generated-meme');
+    $.ajax({
+        url : apiUrl + '/?page=latest_meme',
+        dataType : 'json'
+    })
+        .done((res) => {
+            console.log(res);
+            res.forEach(el => {
+                let relativePath = '..' + el.path.slice(33);
+                $generatedMeme.append(`
+                                <img class="img-responsive" src="${relativePath}" width="80%" alt="${el.title}">
+                                `);
+            })
+        });
+
 })
-
-
 
