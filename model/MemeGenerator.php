@@ -1,5 +1,9 @@
 <?php
 const GENERATED_DIRECTORY = '/public/generatedMemes/';
+require __DIR__.'/../vendor/autoload.php';
+
+use GDText\Box;
+use GDText\Color;
 
 class MemeGenerator
 {
@@ -26,26 +30,34 @@ class MemeGenerator
             return imagecreatefromgif($path);
     }
 
-    private function imagettfstroketext(&$image, $size, $angle, $x, $y, &$textcolor, &$strokecolor, $fontfile, $text, $px) {
-        for($c1 = ($x-abs($px)); $c1 <= ($x+abs($px)); $c1++)
-            for($c2 = ($y-abs($px)); $c2 <= ($y+abs($px)); $c2++)
-                $bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
-        return imagettftext($image, $size, $angle, $x, $y, $textcolor, $fontfile, $text);
-    }
-
-    public function addUpperText($upperText, $lowText) {
+    public function generateMeme($upperText, $lowText)
+    {
         $uploadedImage = $this->createImage($this->image);
-        $color = imagecolorallocate($uploadedImage, 255, 255, 255);
-        $strokeColor = imagecolorallocate($uploadedImage, 0, 0, 0);
-        putenv('GDFONTPATH=' . realpath('.'));
-        $font = "Impact";
-        $this->imagettfstroketext($uploadedImage, 40, 0, 20, 50, $color, $strokeColor, "/home/kasia/Pulpit/pai-meme-maker/public/assets/fonts/impact.ttf", strtoupper($upperText), 3);
-        $this->imagettfstroketext($uploadedImage, 40, 0, 20, $this->imageHeight - 20, $color, $strokeColor, "/home/kasia/Pulpit/pai-meme-maker/public/assets/fonts/impact.ttf", strtoupper($lowText), 3);
+        $box = new Box($uploadedImage);
+        $box->setFontFace("/home/kasia/Pulpit/pai-meme-maker/public/assets/fonts/impact.ttf");
+        $box->setFontSize(40);
+        $box->setBox(0, 20, $this->imageWidth, $this->imageHeight);
+        $box->setFontColor(new Color(255, 255, 255));
+        $box->setStrokeColor(new Color(0, 0, 0));
+        $box->setStrokeSize(3);
+        $box->setTextAlign('center', 'top');
+        $box->setLineHeight(1.5);
+        $box->draw(strtoupper($upperText));
+
+        $box = new Box($uploadedImage);
+        $box->setFontFace("/home/kasia/Pulpit/pai-meme-maker/public/assets/fonts/impact.ttf");
+        $box->setFontSize(40);
+        $box->setBox(0, -20, $this->imageWidth, $this->imageHeight);
+        $box->setFontColor(new Color(255, 255, 255));
+        $box->setStrokeColor(new Color(0, 0, 0));
+        $box->setStrokeSize(3);
+        $box->setTextAlign('center', 'bottom');
+        $box->setLineHeight(1.0);
+        $box->draw(strtoupper($lowText));
+
         imagejpeg($uploadedImage, dirname(__DIR__).GENERATED_DIRECTORY.$_SESSION['username'].'/'.$_FILES['file']['name'], 100);
-        imagedestroy($uploadedImage);
+
     }
-
-
 
 }
 ?>

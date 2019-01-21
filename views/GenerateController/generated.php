@@ -21,10 +21,10 @@
             <br>
             <div id="memeCanvas">
                 <div class="row">
-                    <div class="col-md-8 generated-meme">
+                    <div class="col-md-7 offset-1 generated-meme">
 
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <form action="?page=generated" method="POST" ENCTYPE="multipart/form-data">
                             <div class="form-group">
                                 <label for="toptext">Top Text</label>

@@ -32,7 +32,7 @@ class GenerateController extends AppController
             list($width, $height) = getimagesize($uploadDirectory);
             $generatedDirectory = dirname(__DIR__).GENERATED_DIRECTORY.$username.$_FILES['file']['name'];
             $memeGenerator = new MemeGenerator($uploadDirectory, $width, $height);
-            $memeGenerator->addUpperText($_POST['toptext'], $_POST['bottomtext']);
+            $memeGenerator->generateMeme($_POST['toptext'], $_POST['bottomtext']);
             $memeGeneratorMapper->addGeneratedMeme($_POST['title'], $width, $height, $generatedDirectory,$userId);
             $this->render("GenerateController",'generated');
         } else {
