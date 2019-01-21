@@ -19,7 +19,8 @@ class UserMapper
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['username'], $user['name'], $user['surname'], $user['email'], $user['password']);
+            print_r($user);
+            return new User($user['ID'], $user['username'], $user['name'], $user['surname'], $user['email'], $user['password']);
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
@@ -30,7 +31,7 @@ class UserMapper
     {
         try {
             $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE email != :email;');
-            $stmt->bindParam(':email', $_SESSION['id'], PDO::PARAM_STR);
+            $stmt->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
             $stmt->execute();
 
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -59,10 +60,21 @@ class UserMapper
             $stmt = $this->database->connect()->prepare("INSERT INTO `users` (username, name, surname, email, password, role) 
                                                                    VALUES('$username', '$name', '$surname', '$email', '".md5($password)."', '$role' )");
             $stmt->execute();
+            $this->createUserDirectory($username);
             return true;
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }
+    }
+
+    public function createUserDirectory($user){
+        $folder = dirname(__DIR__).'/public/upload/'.$user;
+        $old_umask = umask(0);
+        if (!mkdir($folder, 0777, true)) {
+            return false;
+        }
+        umask($old_umask);
+        return true;
     }
 }

@@ -3,6 +3,7 @@
 require_once 'controllers/LoginController.php';
 require_once 'controllers/IndexController.php';
 require_once 'controllers/RegisterController.php';
+require_once 'controllers/UploadController.php';
 
 class Routing
 {
@@ -15,6 +16,10 @@ class Routing
                 'controller' => 'IndexController',
                 'action' => 'index'
             ],
+            'index_memes' => [
+                'controller' => 'IndexController',
+                'action' => 'memes'
+            ],
             'login' => [
                 'controller' => 'LoginController',
                 'action' => 'login'
@@ -26,7 +31,11 @@ class Routing
             'logout' => [
                 'controller' => 'IndexController',
                 'action' => 'logout'
-                ]
+                ],
+            'upload' => [
+                'controller' => 'UploadController',
+                'action' => 'upload'
+            ]
         ];
     }
 

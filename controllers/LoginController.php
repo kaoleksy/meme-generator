@@ -31,6 +31,7 @@ class LoginController extends AppController
             if ($user->getPassword() !== md5($_POST['password'])) {
                 return $this->render("LoginController", 'login', ['message' => ['Wrong password']]);
             } else {
+                $_SESSION["ID"] = $user->getId();
                 $_SESSION["email"] = $user->getEmail();
                 $_SESSION["username"] = $user->getUsername();
                 $_SESSION["role"] = $user->getRole();

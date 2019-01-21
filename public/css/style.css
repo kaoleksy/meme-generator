@@ -8,7 +8,10 @@ body {
     margin-top: 100px !important;
 }
 
-h1 {
-    color: darkblue;
+.upload-form {
+    margin-top: 50px;
 }
 
+.upload-icon {
+    padding-right: 10px;
+}
