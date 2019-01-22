@@ -5,6 +5,7 @@ require_once 'controllers/IndexController.php';
 require_once 'controllers/RegisterController.php';
 require_once 'controllers/UploadController.php';
 require_once 'controllers/GenerateController.php';
+require_once 'controllers/UserMemesController.php';
 
 class Routing
 {
@@ -49,6 +50,30 @@ class Routing
                 'controller' => 'GenerateController',
                 'action' => 'generated'
             ],
+            'your_uploaded_memes' => [
+                'controller' => 'UserMemesController',
+                'action' => 'userUploadedMemes'
+            ],
+            'your_generated_memes' => [
+                'controller' => 'UserMemesController',
+                'action' => 'userGeneratedMemes'
+            ],
+            'your_memes' => [
+                'controller' => 'UserMemesController',
+                'action' => 'yourMemes'
+            ],
+            'admin' => [
+                'controller' => 'AdminController',
+                'action' => 'index'
+            ],
+            'admin_users' => [
+                'controller' => 'AdminController',
+                'action' => 'users'
+            ],
+            'admin_delete_user' => [
+                'controller' => 'AdminController',
+                'action' => 'userDelete'
+            ]
 
         ];
     }

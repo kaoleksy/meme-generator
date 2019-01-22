@@ -19,7 +19,7 @@ class UserMapper
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['ID'], $user['username'], $user['name'], $user['surname'], $user['email'], $user['password']);
+            return new User($user['ID'], $user['username'], $user['name'], $user['surname'], $user['email'], $user['password'], $user['role_id']);
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
@@ -41,10 +41,10 @@ class UserMapper
         }
     }
 
-    public function delete(int $id): void
+    public function delete(int $id)
     {
         try {
-            $stmt = $this->database->connect()->prepare('DELETE FROM users WHERE id = :id;');
+            $stmt = $this->database->connect()->prepare('DELETE FROM users WHERE ID = :id;');
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
         }
@@ -56,7 +56,7 @@ class UserMapper
     public function registerUser($username, $name, $surname, $email, $password, $role)
     {
         try {
-            $stmt = $this->database->connect()->prepare("INSERT INTO `users` (username, name, surname, email, password, role) 
+            $stmt = $this->database->connect()->prepare("INSERT INTO `users` (username, name, surname, email, password, role_id) 
                                                                    VALUES('$username', '$name', '$surname', '$email', '".md5($password)."', '$role' )");
             $stmt->execute();
             $this->createUserDirectory($username);

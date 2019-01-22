@@ -14,16 +14,13 @@
           echo '<p>Logged as '. $_SESSION["username"].'. To logout click <a href=\'?page=logout\'>here</a></p>';
         }
         ?>
-        <p>
-            <?= $text ?>
-        </p>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6 offset-sm-3 memes">
+        <div class="col-sm-6 offset-sm-3 memes ">
 
         </div>
-        <div class="col-sm-6 offset-sm-3 author">
+        <div class="col-sm-6 offset-sm-3 author ">
 
         </div>
     </div>

@@ -8,9 +8,9 @@ class User
     private $surname;
     private $email;
     private $password;
-    private $role = "ROLE_USER";
+    private $role_id;
 
-    public function __construct($id, $username, $name, $surname, $email, $password)
+    public function __construct($id, $username, $name, $surname, $email, $password, $role_id)
     {
         $this->id = $id;
         $this->username = $username;
@@ -18,6 +18,7 @@ class User
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
+        $this->role_id = $role_id;
     }
 
     public function getUsername()
@@ -75,13 +76,13 @@ class User
         return $this->id;
     }
 
-    public function getRole(): string
+    public function getRole(): int
     {
-        return $this->role;
+        return $this->role_id;
     }
 
-    public function setRole(string $role): void
+    public function setRole(string $role_id): void
     {
-        $this->role = $role;
+        $this->role_id = $role_id;
     }
 }

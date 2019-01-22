@@ -39,7 +39,7 @@
                                     <input type="text" name="bottomtext" id="bottomtext" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" name="file" value="Upload Your Image" class="btn btn-warning form-control" id="chooseImage">
+                                    <input type="file" name="file" value="Upload Your Image" class="form-control" id="chooseImage">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Meme It!" class="btn btn-danger form-control">

@@ -33,7 +33,33 @@ class MemeMapper
 
     public function getMemes() {
         try {
-            $stmt = $this->database->connect()->prepare('SELECT meme.id, meme.path, meme.title, users.username FROM meme LEFT JOIN users ON users.ID = meme.user_id;;');
+            $stmt = $this->database->connect()->prepare('SELECT meme.id, meme.path, meme.title, users.username FROM meme LEFT JOIN users ON users.ID = meme.user_id ORDER BY meme.id DESC;');
+            $stmt->execute();
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $user;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+    public function getUserMemes($user_id) {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT path, user_id FROM meme WHERE user_id = :user_id');
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $user;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+    public function getUserGeneratedMemes($user_id) {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT path, user_id FROM generated_meme WHERE user_id = :user_id');
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $user;

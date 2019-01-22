@@ -24,7 +24,7 @@ class RegisterController extends AppController
                                         $_POST['surname'],
                                         $_POST['email'],
                                         $_POST['password'],
-                                        "ROLE_USER"
+                                        2
                                     );
 
             if($registerUser) {

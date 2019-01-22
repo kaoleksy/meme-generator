@@ -25,22 +25,14 @@
 
                     </div>
                     <div class="col-md-3">
-                        <form action="?page=generated" method="POST" ENCTYPE="multipart/form-data">
+                        <form method="POST" ENCTYPE="multipart/form-data">
                             <div class="form-group">
-                                <label for="toptext">Top Text</label>
-                                <input type="text" name="toptext" id="toptext" class="form-control">
+                                <p>Your meme is ready! Press the button to see it in your memes gallery -> </p>
                             </div>
                             <div class="form-group">
-                                <label for="bottomtext">Bottom Text</label>
-                                <input type="text" name="bottomtext" id="bottomtext" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="file" value="Upload Your Image" class="btn btn-warning form-control" id="chooseImage">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="SAVE It!" class="btn btn-danger form-control">
                             </div>
                         </form>
+                        <input type="submit" value="Go to my memes!" class="btn btn-danger form-control" onclick="document.location.href='?page=your_memes';">
                         <br><br>
                     </div>
                 </div>
@@ -49,3 +41,4 @@
 
 </body>
 </html>
+

@@ -1,6 +1,7 @@
 <?php
 
 require_once "AppController.php";
+require_once "AdminController.php";
 
 require_once __DIR__.'/../model/User.php';
 require_once __DIR__.'/../model/UserMapper.php';
@@ -34,10 +35,17 @@ class LoginController extends AppController
                 $_SESSION["ID"] = $user->getId();
                 $_SESSION["email"] = $user->getEmail();
                 $_SESSION["username"] = $user->getUsername();
-                $_SESSION["role"] = $user->getRole();
+                $_SESSION["role_id"] = $user->getRole();
 
-                $url = "http://$_SERVER[HTTP_HOST]/";
-                header("Location: {$url}?page=index");
+                if($_SESSION['role_id']!=1) {
+                    $url = "http://$_SERVER[HTTP_HOST]";
+                    header("Location: {$url}?page=index");
+                }
+                else {
+                    $url = "http://$_SERVER[HTTP_HOST]";
+                    header("Location: {$url}?page=admin");
+                }
+
                 exit();
             }
         }
