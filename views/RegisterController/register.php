@@ -8,9 +8,9 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 offset-sm-3 login-form">
-            <h1 class="panel-header">SIGN UP</h1>
+            <h1 class="panel-header meme-title">SIGN UP</h1>
             <hr>
-            <form action="?page=register" method="POST">
+            <form action="?page=register" method="POST" class="bckg">
                 <div class="form-group row">
                     <label for="inputUsername" class="col-sm-1 col-form-label">
                         <i class="material-icons md-48">face</i>
@@ -50,7 +50,7 @@
                     <div class="col-sm-11">
                         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required/>
                     </div>
-                <input type="submit" value="Sign up" class="btn btn-primary btn-lg" />
+                <input type="submit" value="Sign up" class="btn btn-danger btn-lg" />
                 </div>
             </form>
             <hr>

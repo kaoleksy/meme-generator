@@ -10,14 +10,23 @@ $(document).ready(function () {
             console.log(res);
             res.forEach(el => {
                 let relativePath = '..' + el.path.slice(33);
-                $memesList.append(`<div class="meme-field">
+            $memesList.append(`<div class="meme-field center">
                                 <p class="meme-title">${el.title}</p>
                                 <img src="${relativePath}" width="100%" alt="${el.title}" class="meme-image">
-                                <p>Author: ${el.username}</p>
+                                <p class="author">Author: ${el.username}</p>
+                                <button class="btn btn-warning btn-lg" type="button" onclick="showFormComment()">Add Comment
+                                </button><br>
+                                <form style="display:none;" class="newCommentForm"><hr>
+                                <textarea id=${el.id} class="newComment" name="newCommentValue" placeholder="Enter your comment here..."></textarea><br>
+                                <input type="button" name="${el.id}" value="Submit" 
+                                        class="btn btn-primary" onclick="addCommentToMeme(${el.id})"><hr>
+                                </form><br>
+                                <button class="btn btn-danger btn-lg showCommentsButton${el.id}" type="button" onclick="showAllMemeComments(${el.id})">Show All Comments
+                                </button>
                                 </div>
                   
                                 `);
-            })
+            });
         });
 
     function readURL(input) {
@@ -131,4 +140,57 @@ function deleteUser(id) {
             getUsers();
         }
     });
+}
+
+function addCommentToMeme(id) {
+    const apiUrl = "http://localhost:7000";
+    let value = $('#'+id+'.newComment').val();
+    console.log(value);
+    $.ajax({
+        url : apiUrl + '/?page=add_comment',
+        method : "POST",
+        data : {
+            id : id,
+            comment: value
+        },
+        success: function(msg) {
+            alert('Add comment successfully!');
+            console.log(msg);
+            showAllMemeComments(id);
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+}
+
+function showFormComment() {
+    $('.newCommentForm').css('display', 'block');
+    console.log('click!');
+}
+
+function showAllMemeComments(id) {
+    const showCommentsButton = $('.showCommentsButton'+id);
+    const apiUrl = "http://localhost:7000";
+    $.ajax({
+        url: apiUrl + '/?page=show_comments',
+        method: "POST",
+        data: {
+            id: id
+        }
+    })
+        .done((res) => {
+            showCommentsButton.empty();
+            var resDecode = JSON.parse(res);
+            showCommentsButton.parent().append(`<table class="table table-hover" id="commentTable`+id+`">
+            `);
+            $('#commentTable'+id).empty();
+            resDecode.forEach(el => {
+                $('#commentTable'+id).append(`<tr>
+                     <td>${el.id}</td>
+                     <td>${el.comment}</td></tr>`);
+            })
+            showCommentsButton.parent().append(`</table>`);
+        });
+    $('.showCommentsButton'+id).css('display', 'none');
 }

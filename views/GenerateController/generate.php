@@ -8,16 +8,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 text-right">
-            <?php
-            if(isset($_SESSION) && !empty($_SESSION)) {
-                echo '<p>Logged as '. $_SESSION["username"].'. To logout click <a href=\'?page=logout\'>here</a></p>';
-            }
-            ?>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-sm-12">
+            <p class="meme-title">GENERATE YOUR MEME</p>
             <br>
                 <div id="memeCanvas">
                     <div class="row">

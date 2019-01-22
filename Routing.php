@@ -6,6 +6,7 @@ require_once 'controllers/RegisterController.php';
 require_once 'controllers/UploadController.php';
 require_once 'controllers/GenerateController.php';
 require_once 'controllers/UserMemesController.php';
+require_once 'controllers/MemeDetailsController.php';
 
 class Routing
 {
@@ -73,8 +74,15 @@ class Routing
             'admin_delete_user' => [
                 'controller' => 'AdminController',
                 'action' => 'userDelete'
+            ],
+            'add_comment' => [
+                'controller' => 'MemeDetailsController',
+                'action' => 'addComment'
+            ],
+            'show_comments' => [
+                'controller' => 'MemeDetailsController',
+                'action' => 'showComments'
             ]
-
         ];
     }
 

@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 offset-sm-3 upload-form">
-            <h2>UPLOAD YOUR MEME</h2>
+            <p class="meme-title">UPLOAD YOUR MEME</p>
             <form action="?page=upload" method="POST" ENCTYPE="multipart/form-data">
                 <div class="form-group row">
                     <div class="col-sm-12">

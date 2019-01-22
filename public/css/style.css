@@ -4,6 +4,11 @@ body {
     margin-top: 100px;
 }
 
+
+/*.memes {*/
+    /*background-color: #fcfcdb;*/
+/*}*/
+
 .login-form {
     margin-top: 100px !important;
 }
@@ -19,3 +24,45 @@ body {
 .center {
     text-align: center;
 }
+
+.meme-title {
+    margin-bottom: 5px;
+    margin-top: 50px;
+}
+
+.author {
+    margin-bottom: 0px;
+}
+
+.newComment {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+p {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 22px;
+    letter-spacing: -0.6px;
+    word-spacing: 2px;
+    color: #2E2E2E;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: none;
+}
+
+.meme-title {
+    font-weight:bold;
+    font-variant:small-caps;
+    color: #3a3a3a;
+    letter-spacing:1pt;
+    word-spacing:4pt;
+    font-size:40px;
+    text-align:center;
+    font-family:tahoma, verdana, arial, sans-serif;
+    line-height:1;
+}
+
